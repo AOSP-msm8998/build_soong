@@ -20,6 +20,7 @@ import (
 	"runtime"
 	"strings"
 
+    "aosp/soong/android"
 	"android/soong/bazel"
 
 	"github.com/google/blueprint/proptools"
@@ -184,6 +185,9 @@ type variableProperties struct {
 			Cflags []string
 			Cmd    *string
 		}
+
+		// include Aosp variables
+		Aosp android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -494,6 +498,9 @@ type ProductVariables struct {
 	BuildFlags map[string]string `json:",omitempty"`
 
 	BuildFromSourceStub *bool `json:",omitempty"`
+
+	// include Aosp variables
+	Aosp android.ProductVariables
 }
 
 type PartitionQualifiedVariablesType struct {
